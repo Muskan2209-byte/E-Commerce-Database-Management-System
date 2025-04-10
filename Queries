@@ -1,0 +1,12 @@
+Queries/A particular vendor's categories of products he's selling.sql
+use OnlineShopping
+select CategoryName
+from Category
+where CategoryID in
+					(select Distinct CategoryID
+					from Product
+					where ProductID in
+									(select ProductID
+									from VendorProduct
+									where VendorID='3'))
+
